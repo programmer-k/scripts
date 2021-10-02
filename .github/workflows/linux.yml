@@ -17,4 +17,5 @@ jobs:
       - run: unzip ${{ env.LINUX_SHA }}.zip
       - run: ls -al
       - run: ls -al linux/
+      - run: ./install-deps.sh
       - run: ./build-linux.sh linux-${{ env.LINUX_SHA }} tinyconfig
