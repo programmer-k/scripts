@@ -1,0 +1,15 @@
+name: linux
+
+on:
+  push:
+    paths:
+      - 'linux'
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - run: wget https://github.com/programmer-k/linux/archive/${GITHUB_SHA}.zip
+      - run: unzip ${GITHUB_SHA}.zip
+      - run: ./build-linux.sh ${GITHUB_SHA} tinyconfig
