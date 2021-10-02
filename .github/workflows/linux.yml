@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-      - run: wget https://github.com/programmer-k/linux/archive/${GITHUB_SHA}.zip
-      - run: unzip ${GITHUB_SHA}.zip
-      - run: ./build-linux.sh ${GITHUB_SHA} tinyconfig
+      - run: LINUX_SHA=$(git ls-remote https://github.com/programmer-k/linux HEAD | awk '{print $1;}')
+      - run: wget https://github.com/programmer-k/linux/archive/${LINUX_SHA}.zip
+      - run: unzip ${LINUX_SHA}.zip
+      - run: ./build-linux.sh ${LINUX_SHA} tinyconfig
