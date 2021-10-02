@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
+      - uses: actions/checkout@v2
       - run: echo "LINUX_SHA=`git ls-remote https://github.com/programmer-k/linux HEAD | awk '{print $1;}'`" >> $GITHUB_ENV
       - run: echo "${{ env.LINUX_SHA }}"
       - run: wget https://github.com/programmer-k/linux/archive/${{ env.LINUX_SHA }}.zip
