@@ -16,4 +16,5 @@ jobs:
       - run: wget https://github.com/programmer-k/linux/archive/${{ env.LINUX_SHA }}.zip
       - run: unzip ${{ env.LINUX_SHA }}.zip
       - run: ls -al
-      - run: ./build-linux.sh ${{ env.LINUX_SHA }} tinyconfig
+      - run: ls -al linux/
+      - run: ./build-linux.sh linux-${{ env.LINUX_SHA }} tinyconfig
