@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-      - run: |
-        LINUX_SHA=$(git ls-remote https://github.com/programmer-k/linux HEAD | awk '{print $1;}')
-        wget https://github.com/programmer-k/linux/archive/${LINUX_SHA}.zip
-        unzip ${LINUX_SHA}.zip
-        ./build-linux.sh ${LINUX_SHA} tinyconfig
+      - run: echo "LINUX_SHA=`git ls-remote https://github.com/programmer-k/linux HEAD | awk '{print $1;}'`" >> $GITHUB_ENV
+      - run: echo "${{ env.LINUX_SHA }}"
+      - run: wget https://github.com/programmer-k/linux/archive/${{ env.LINUX_SHA }}.zip
+      - run: unzip ${{ env.LINUX_SHA }}.zip
+      - run: ./build-linux.sh ${{ env.LINUX_SHA }} tinyconfig
